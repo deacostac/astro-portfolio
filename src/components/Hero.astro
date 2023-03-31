@@ -1,0 +1,69 @@
+---
+const { src2 = '/dani-nobg-sec.png', dar} = Astro.props
+import 'animate.css'
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
+      <div class="flex flex-col items-center gap-8 md:items-start">
+        <h1 class="text-center text-6xl md:text-left lg:text-8xl">
+          <slot>
+          </slot>
+        </h1>
+        <span class="text-6xl font-sans">Hola, soy Daniel</span>
+        <span class="text-xl font-sans"> 
+          Un apasionado de la tecnología y la programación, en este espacio podrás conocer mas sobre mi,
+          proyectos en los que he participado y liderado.
+        </span>
+        <div class="flex justify-center">
+          <img class="w-10 m-4 icons-testimonials cursor-pointer" src="/icons/linkedin.png" />   
+          <img class="w-10 m-4 icons-testimonials cursor-pointer" src="/icons/twitter.png" />  
+      </div>
+      </div>
+      <div id="hero-content">
+        <img class="hidden lg:block hero-img" src={src2} alt="" decoding="async" />
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  function reportStorage(evt) {
+  alert("El `Storage` fue modificado");
+  }
+  window.onload = function () {
+  window.addEventListener('storage', reportStorage, false);
+  }
+  </script> 
+
+<script>
+
+  const dar = localStorage.getItem('darkMode');
+  if(dar != 'null' ){
+    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/dani-nobg.png" alt="" decoding="async" />'
+  }else{
+    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/dani-nobg-sec.png" alt="" decoding="async" />'
+  }
+</script>
+
+<style lang="scss">
+
+  .hero-img{
+    width: 290px;
+    margin: 3em auto auto auto;
+    
+  }
+  .text-gradient {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-500));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  :global(.darkmode .text-gradient) {
+    background: linear-gradient(315deg, var(--primary-200) 25%, var(--secondary-400));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

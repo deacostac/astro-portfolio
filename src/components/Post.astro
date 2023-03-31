@@ -1,0 +1,189 @@
+---
+const { img, title, desc, tags, color } = Astro.props
+---
+
+<div class="ag-format-container">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item ">
+        <a href="#" class="ag-courses-item_link">
+          <div class={`ag-courses-item_bg ${color}"`}></div>
+          <div class="ag-courses-item_title">
+            {title}
+          </div>
+          <div class="ag-courses-image">
+            <img class="image-cover" src={img} alt={`banner ${title}`}/>
+          </div>
+          <div class="ag-courses-desc">
+            <p>{desc}</p>
+          </div>
+  
+          <div class="ag-courses-item_tags">
+            Tags:
+            <span class="ag-courses-item_date">
+              {tags}
+            </span>
+          </div>
+        </a>
+      </div> 
+    </div>
+  </div>
+<style>
+ 
+.ag-courses_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  padding: 50px 0;
+}
+.ag-courses_item {
+  margin: 0 15px 30px;
+  box-shadow: inset 0 -3em 3em rgba(47, 45, 45, 0.1), 0 0 0 2px rgb(66, 66, 66), 0.3em 0.3em 1em rgba(0,0,0,0.3);
+  overflow: hidden;
+  border-radius: 28px;
+  max-height: 33rem;
+}
+.ag-courses-item_link {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-desc,
+.ag-courses-item_link:hover .ag-courses-item_tags,
+.ag-courses-item_link:hover .ag-courses-item_title,
+.ag-courses-item_link:hover .ag-courses-item_date  {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+
+.ag-courses-image{
+  z-index: 2;
+  position: relative;
+  margin-bottom: 2em;
+  height: 184px;
+}
+.image-cover{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.ag-courses-item_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+  padding: 30px 20px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 30px;
+  z-index: 2;
+  position: relative;
+  color: var(--font-color);
+}
+.ag-courses-desc {
+  min-height: 87px;
+  margin: 0 0 25px;
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
+  padding: 0 30px;
+  color: var(--font-color);
+
+}
+.ag-courses-item_tags {
+  font-size: 18px;
+  padding: 30px 20px;
+  z-index: 2;
+  position: relative;
+  color: var(--font-color);
+}
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #f9b234;
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease;
+}
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+.ag-courses-item_bg.green\".astro-HUXYRZVI {
+  background-color: #3ecd5e;
+}
+.ag-courses-item_bg.red\".astro-HUXYRZVI{
+  background-color: #e44002;
+}
+.ag-courses-item_bg.purple\".astro-HUXYRZVI{
+  background-color: #952aff;
+}
+.ag-courses-item_bg.pink\".astro-HUXYRZVI{
+  background-color: #cd3e94;
+}
+.ag-courses-item_bg.blue\".astro-HUXYRZVI{
+  background-color: #4c49ea;
+}
+.ag-courses-item_bg.brown\".astro-HUXYRZVI {
+  background-color: #3d2e0c;
+}
+
+
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+    .ag-courses_box {
+    padding: 0;
+  }
+  .ag-courses_item {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-height: none;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 16px;
+  }
+}
+
+</style>

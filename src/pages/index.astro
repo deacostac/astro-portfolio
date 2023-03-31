@@ -1,0 +1,92 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Hero from '../components/Hero.astro'
+import Tools from '../components/Tools.astro'
+import Counter from '../components/Counter.astro'
+import ContentMedia from '../components/ContentMedia.astro'
+import 'animate.css';
+import Testimonial from '../components/Testimonial.astro'
+import TimeLine from '../components/TimeLine.astro'
+
+const testimonial = [
+{
+  'name': 'Hector Ruiz',
+  'rol': 'Web Developer at Alfred',
+  'opinion': 'lorem impum dolor lorem impum dolor lorem impum dolor'
+}
+]
+
+
+---
+
+<DefaultLayout title="Home">
+  <Hero />
+  <section class="my-12">
+    <div class="container">
+      <h2 class="mb-16 text-5xl font-sans heading2 animate__animated text-center">Herramientas</h2>
+      <div class="grid grid-cols-2 gap-12 md:grid-cols-2 lg:grid-cols-6">
+        <Tools icon="mdi:language-javascript" title="Javascript" />
+        <Tools icon="mdi:react" title="ReactJs" />
+        <Tools icon="mdi:book-open-page-variant" title="Astro" />
+        <Tools icon="mdi:vuejs" title="VueJs" />
+        <Tools icon="mdi:nodejs" title="NodeJs" />
+        <Tools icon="mdi:language-css3" title="CSS" />
+        <Tools icon="mdi:tailwind" title="Tailwind" />
+        <Tools icon="mdi:language-markdown" title="Tachyons" />
+        <Tools icon="mdi:graphql" title="GraphQl" />
+        <Tools icon="mdi:api" title="Rest" />
+        <Tools icon="mdi:git" title="Git" />
+        <Tools icon="mdi:language-html5" title="HTML5" />
+      </div>
+    </div>
+  </section>
+  <h2 class="container text-5xl heading2 font-sans text-center">Proyectos</h2>
+  <ContentMedia imgSrc="/jumbo.png">
+    <h2 class="font-sans heading2" >Tiendas Jumbo Colombia</h2>
+    <p class="text-xl font-sans">
+      E-commerce desarrollado para tiendas jumbo colombia mientras trabajaba para la agencia implementadora ItGlobers <a href="https://www.tiendasjumbo.co/"
+        >Sitio en vivo</a
+      >. esta desarrollado con VtexIO, NodeJs, ReactJs, JsVanilla en checkout.
+    </p>
+  </ContentMedia>
+  <ContentMedia imgSrc="/metro.png" reverseImg={true}>
+    <h2 class="font-sans heading2">Tiendas Metro Colombia</h2>
+    <p class="text-xl font-sans">
+      E-commerce desarrollado para tiendas Metro colombia mientras trabajaba para la agencia implementadora ItGlobers <a href="https://www.tiendasmetro.co/"
+        >Sitio en vivo</a
+      >. esta desarrollado con VtexIO, NodeJs, ReactJs, JsVanilla en checkout.
+    </p>
+  </ContentMedia>
+  <ContentMedia imgSrc="/contigock.png">
+    <h2 class="font-sans heading2">ContigoCK México</h2>
+    <p class="text-xl font-sans">
+      E-commerce desarrollado para tiendas ContigoCk colombia mientras trabajaba para la agencia implementadora Balloon Group <a href="https://www.contigock.com.mx/"
+        >Sitio en vivo</a
+      >. esta desarrollado con VtexIO, NodeJs, ReactJs, JsVanilla en checkout.
+    </p>
+  </ContentMedia>
+  <div class="flex justify-center font-sans mb-20">
+    <a class="px-2 cursor-pointer hover:opacity-80">Ver todos los proyectos</a>
+  </div>
+  <TimeLine />
+  <Testimonial/>
+  
+  <!-- <section class="mt-12 mb-32">
+    <div class="container">
+      <h2 class="mb-16 text-6xl font-sans">Counters</h2>
+      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
+        <Counter count="130" title="Stars" sub="On GitHub" />
+        <Counter count="17" title="Accessible" sub="Components" />
+        <Counter count="500" title="Commits" sub="Merged" />
+        <Counter count="18+" title="Months" sub="Since launch" />
+      </div>
+    </div>
+  </section> -->
+</DefaultLayout>
+
+<style>
+  .heading2{
+    margin-top: 5rem;
+    font-weight: 400;
+  }
+</style>

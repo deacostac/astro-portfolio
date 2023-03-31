@@ -1,0 +1,151 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro'
+import { Card, Pagination } from 'accessible-astro-components'
+import Post from '../../components/Post.astro'
+
+export async function getStaticPaths({ paginate }) {
+    const projects = [
+  {
+    "tags": ["vtex", " react"],
+    "id": 1,
+    "title": "Tiendas Jumbo",
+    "img": "/jumbo.png",
+    "color": "green",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Tiendas Metro",
+    "img": "/metro.png",
+    "color": "red",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Animarama",
+    "img": "/animarama.png",
+    "color": "yellow",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Berlei",
+    "img": "/berlei.png",
+    "color": "brown",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "ContigoCK",
+    "img": "/contigock.png",
+    "color": "red",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Vicky Form",
+    "img": "/vicky.png",
+    "color": "pink",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Aqui + Frescos GT",
+    "img": "/aqui+frescosgt.png",
+    "color": "green",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Tiendas Easy",
+    "img": "/easy.png",
+    "color": "red",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  {
+    "tags": ["vtex", " node"],
+    "id": 1,
+    "title": "Devlyn",
+    "img": "/devlyn.png",
+    "color": "blue",
+    "desc": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam"
+  },
+  
+]
+
+  return paginate(projects, { pageSize: 9 })
+}
+
+const { page } = Astro.props
+---
+
+<DefaultLayout
+  title="Proyectos"
+  description="Aqui encontraras una lista con todos los proyectos en los que he participado"
+>
+  <section class="my-12">
+    <div class="space-content container">
+      <h1 class="font-sans">Proyectos</h1>
+      <p class="text-2xl font-sans">
+        Aqui encontraras una lista con todos los proyectos en los que he participado
+      </p>
+    </div>
+  </section>
+  <section class="my-12">
+    <div class="container">
+      <p class="text-sm font-sans"><em>Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em></p>
+      <ul class="my-3 font-sans">
+        {
+          page.data.map((post) => (
+            <li>
+              <Post 
+              img={post.img}
+              title={post.title}
+              desc={post.desc}
+              tags={post.tags}
+              color={post.color}
+
+              >
+              </Post>
+              
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-12 grid place-content-center font-sans">
+        <Pagination
+          firstPage={page.url.prev ? '/projects' : null}
+          previousPage={page.url.prev ? page.url.prev : null}
+          nextPage={page.url.next ? page.url.next : null}
+          lastPage={page.url.next ? `/projects/${Math.round(page.total / page.size)}` : null}
+          currentPage={page.currentPage}
+          totalPages={Math.round(page.total / page.size)}
+        />
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style lang="scss">
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4rem;
+
+    @media (min-width: 550px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
+
+    @media (min-width: 950px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
