@@ -6,4 +6,6 @@ import tailwind from '@astrojs/tailwind'
 // https://astro.build/config
 export default defineConfig({
   integrations: [compress(), mdx(), tailwind()],
+  site: "https://deacostac.github.io",
+  base: "/astro-portfolio"
 })
