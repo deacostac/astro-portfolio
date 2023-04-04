@@ -1,6 +1,5 @@
 ---
-import src2 from '../assets/img/dani-nobg-sec.png'
-const { dar} = Astro.props
+const { src2 = '/astro-portfolio/dani-nobg-sec.png', dar} = Astro.props
 import 'animate.css'
 ---
 
@@ -45,9 +44,9 @@ import 'animate.css'
 
   const dar = localStorage.getItem('darkMode');
   if(dar != 'null' ){
-    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/dani-nobg.png" alt="" decoding="async" />'
+    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/astro-portfolio/dani-nobg.png" alt="" decoding="async" />'
   }else{
-    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/dani-nobg-sec.png" alt="" decoding="async" />'
+    document.getElementById('hero-content').innerHTML = '<img class="hidden lg:block hero-img" src="/astro-portfolio/dani-nobg-sec.png" alt="" decoding="async" />'
   }
 </script>
 
